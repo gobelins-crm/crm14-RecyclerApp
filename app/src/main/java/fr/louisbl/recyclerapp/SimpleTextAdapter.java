@@ -9,11 +9,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.ViewHolder> {
 
     private List<String> mDatas;
 
-    public CustomAdapter(ArrayList<String> datas) {
+    public SimpleTextAdapter(ArrayList<String> datas) {
         mDatas = datas;
     }
 

@@ -23,14 +23,15 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void onAddButtonClick() {
-        mDatas.add("Text " + mDatas.size());
-        mAdapter.notifyDataSetChanged();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initial data
+        for (int i = 0; i < 10; i++) {
+            mDatas.add("Text " + i);
+        }
+
         setContentView(R.layout.activity_main);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -40,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        for (int i = 0; i < 10; i++) {
-            mDatas.add("Text " + i);
-        }
-
-        mAdapter = new CustomAdapter(mDatas);
+        mAdapter = new SimpleTextAdapter(mDatas);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private void onAddButtonClick() {
+        mDatas.add("Text " + mDatas.size());
+        // re-render the list
+        mAdapter.notifyDataSetChanged();
     }
 }
